@@ -8,15 +8,19 @@ spec:
       elements:
       - cluster: in-cluster
         url: https://kubernetes.default.svc
+        branch: main
+      - cluster: autopilot
+        url: https://35.221.157.70
+        branch: dev
   template:
     metadata:
-      name: '{{cluster}}-guestbook'
+      name: '{{branch}}-guestbook'
     spec:
       project: default
       source:
-        repoURL: https://github.com/jaminism/my-argocd-examples.git
-        targetRevision: HEAD
-        path: application-sets/{{cluster}}/guestbook/
+        repoURL: git@github.com:javalove93/my-argocd-examples.git
+        targetRevision: '{{branch}}'
+        path: application-sets/guestbook/
       destination:
         server: '{{url}}'
         namespace: appset
