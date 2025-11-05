@@ -8,6 +8,8 @@ spec:
       elements:
       - cluster: in-cluster
         url: https://kubernetes.default.svc
+      - cluster: autopilot
+        url: https://34.56.227.155
   template:
     metadata:
       name: '{{cluster}}-guestbook'
